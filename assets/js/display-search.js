@@ -38,7 +38,7 @@ function findActorID(actorName) {
 
 
 //search Movies Mini Database API to find movies IMBD id with the actor using the IMDB id
-//only gets first ten if actor is in more than ten movies
+//only gets first ten if actor is in more than ten movies  
 function findMovieID(actorID) {  
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/id/" + actorID +"/movies_knownFor/";
     const options = {
@@ -73,6 +73,7 @@ function findMovieID(actorID) {
         });
 }
 
+//fetches movies from movies IMDB ID
 function findMovies(movies){ 
     console.log(movies);
     var apiKey = "d63d2ead&s";
