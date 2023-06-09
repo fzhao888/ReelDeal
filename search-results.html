@@ -18,24 +18,22 @@
         <li><a href="#about">About</a></li>
       </ul>
     </nav>
-
     
-  </header>
-
-  <main>
-    <section id="landing-page">
-      <h2>Welcome!</h2>
-      <form class="search-form">
-        <input type="text" placeholder="Search for a movie..."/>
+    <form class="search-form" id="search-form">
+        <input type="text" placeholder="Search for an actor..."/>
         <button type="submit" class="form-input" id="actor-name">Search</button>
       </form>
+      
+    <section class="application-page" id="application-page">
+        <h2>Showing results for <span id="result-text"></span></h2>
+      <div id="result-content"></div>
     </section>
-  </main>
+  </main> 
   
   <footer>
     <p>&copy; 2023 Reel Deal. All rights reserved.</p>
   </footer>
 
-  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/display-search.js"></script>
 </body>
 </html>
