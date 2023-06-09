@@ -1,13 +1,28 @@
+var resultTextEl = document.getElementById("result-text");
+var resultContentEl = document.getElementById("result-content");
+
 function getParams() {
     var actorName = document.location.search.split("=")[1];
+    displayActorName(actorName);
     console.log(actorName);
     findActorID(actorName);
 }
 
+//Displays actor name in 'showing results for'
+function displayActorName(actorName){
+    var names = actorName.split("/"); 
+    var fullName = names[0].split("%20"); 
+    
+    for(var i=0;i<fullName.length;i++){
+        resultTextEl.textContent += fullName[i] + " ";
+    }
+
+}
+
 //searches Movies Mini Database API for IMDB id given the actor name
 function findActorID(actorName) {
-    var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/imdb_id_byName/" + actorName;
-
+    var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/imdb_id_byName/" + actorName;    
+    
     const options = {
         method: 'GET',
         headers: {
@@ -77,11 +92,19 @@ function findMovieID(actorID) {
 function findMovies(movies){ 
     console.log(movies);
     var apiKey = "d63d2ead&s";
+    var queryMovies = [];
     for(var i = 0; i<movies.length;i++){
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i];
-        
+        queryMovies.push(queryURL);
         console.log(queryURL);
     }
+    printResults(queryMovies);
+}
+
+function printResults(queryMovies){
+    var resultCard = document.createElement("div");
+    //add bulma css
+    //resultCard.classList.add();
 }
 
 getParams();
