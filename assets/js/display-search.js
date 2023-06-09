@@ -34,6 +34,7 @@ function displayActorName(actorName) {
 //searches Movies Mini Database API for IMDB id given the actor name
 function findActorID(actorName) {
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/imdb_id_byName/" + actorName;
+    var addSearchName = document.createAttribute("h2");
 
     const options = {
         method: 'GET',
