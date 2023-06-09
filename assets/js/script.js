@@ -12,7 +12,7 @@ function handleSearchFormSubmit(event){
     }
 
     var queryString = './search-results.html?q=' + actorName;
-   // location.assign(queryString);
+    location.assign(queryString);
     console.log("Done!");
 }
 
