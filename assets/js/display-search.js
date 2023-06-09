@@ -60,6 +60,7 @@ function findActorID(actorName) {
         .then(function (result) {
             var actorID = result.results[0].imdb_id;
             findMovieID(actorID);
+
         });
 }
 
@@ -114,7 +115,7 @@ function findMovies(movies) {
     for (var i = 0; i < movies.length; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i];
 
-        //fetches movies object data 
+        //fetches movies object data
         try {
             fetch(queryURL);
         } catch (error) {
@@ -144,9 +145,6 @@ function printResults(movie) {
     var resultBody = document.createElement("div");
     resultBody.classList.add("card-body");
     resultCard.append(resultBody);
-
-
-
 }
 
 
