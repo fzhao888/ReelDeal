@@ -6,17 +6,28 @@ function getParams() {
     var actorName = document.location.search.split("=")[1];
     displayActorName(actorName);
     //console.log(actorName);
-    findActorID(actorName);
+    
 }
 
 //Displays actor name in 'showing results for'
-function displayActorName(actorName) {
+function displayActorName(actorName) { 
+    //checks for empty actor name
+    if(!actorName){
+        resultTextEl.textContent = "";
+        console.error("Please input an actor name.");
+        resultContentEl.innerHTML = '<h3>Please input an actor name.</h3>';
+        return;
+    }//end of checking for empty actor name
+
+    //parses query parameter to get the actor name
     var names = actorName.split("/");
     var fullName = names[0].split("%20");
 
     for (var i = 0; i < fullName.length; i++) {
         resultTextEl.textContent += fullName[i] + " ";
     }
+
+    findActorID(actorName);
 
 }
 
@@ -144,12 +155,7 @@ function handleSearchFormSubmit(event) {
     event.preventDefault();
 
     var actorName = document.getElementById("actor-name").value;
-    console.log(actorName);
-    if (!actorName) {
-        console.error("Please input an actor name.");
-
-        return;
-    }
+    console.log(actorName); 
 
     var queryString = './search-results.html?q=' + actorName;
     location.assign(queryString);
