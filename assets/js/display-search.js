@@ -99,6 +99,12 @@ function findMovieID(actorID) {
         })
         .then(function (result) {
             var movies = [];  
+            if (!result.results.length) {
+                console.log("No results found");
+                resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
+                return;
+            }
+
             for (var i = 0; i < result.results.length; i++) {
                 movies.push(result.results[i][0].imdb_id);
             }
