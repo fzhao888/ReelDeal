@@ -34,7 +34,6 @@ function displayActorName(actorName) {
 //searches Movies Mini Database API for IMDB id given the actor name
 function findActorID(actorName) {
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/imdb_id_byName/" + actorName;
-    var addSearchName = document.createAttribute("h2");
 
     const options = {
         method: 'GET',
@@ -111,7 +110,7 @@ function findMovieID(actorID) {
 
 //fetches movies from movies IMDB ID
 function findMovies(movies) {
-    console.log(movies);
+    //console.log(movies);
     var apiKey = "d63d2ead&s";
     for (var i = 0; i < movies.length; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i];
@@ -146,9 +145,6 @@ function printResults(movie) {
     var resultBody = document.createElement("div");
     resultBody.classList.add("card-body");
     resultCard.append(resultBody);
-
-
-
 }
 
 
