@@ -159,7 +159,6 @@ function printResult(movie) {
 
     var movieNameEl = document.createElement("h3");
     movieNameEl.textContent = movie.Title;
-
     
     var releaseYearEl = document.createElement('p');
     releaseYearEl.innerHTML = '<strong> Release Year: </strong> ' + movie.Year + '</br>';
@@ -179,8 +178,11 @@ function printResult(movie) {
     var imageEl = document.createElement('img');
     imageEl.src = movie.Poster;
 
+    var ratingsEl = document.createElement('p');
+    ratingsEl.innerHTML = '<strong> IMDB Rating: </strong> ' + movie.Ratings[0].Value + '</br>';
 
-    resultBody.append(movieNameEl,imageEl,releaseYearEl,ratedEl,runtimeEl,genreEl,plotEl);
+
+    resultBody.append(movieNameEl,imageEl,ratingsEl, releaseYearEl,ratedEl,runtimeEl,genreEl,plotEl);
     resultContentEl.append(resultCard);
 }
 
