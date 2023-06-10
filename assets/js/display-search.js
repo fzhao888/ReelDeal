@@ -60,6 +60,7 @@ function findActorID(actorName) {
         .then(function (result) {
             var actorID = result.results[0].imdb_id;
             findMovieID(actorID);
+
         });
 }
 
@@ -111,6 +112,7 @@ function findMovieID(actorID) {
 function findMovies(movies) {
     //console.log(movies);
     var apiKey = "d63d2ead&s";
+  
     for (var i = 0; i < movies.length && i < 10 ; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
         var moviesList = [];
@@ -156,7 +158,7 @@ function printResult(movie) {
     var resultBody = document.createElement("div");
     resultBody.classList.add("card-body");
     resultCard.append(resultBody);
-
+  
     var movieNameEl = document.createElement("h3");
     movieNameEl.textContent = movie.Title;
 
@@ -181,7 +183,7 @@ function printResult(movie) {
 
 
     resultBody.append(movieNameEl,imageEl,releaseYearEl,ratedEl,runtimeEl,genreEl,plotEl);
-    resultContentEl.append(resultCard);
+    resultContentEl.append(resultCard
 }
 
 
