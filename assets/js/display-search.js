@@ -6,13 +6,13 @@ function getParams() {
     var actorName = document.location.search.split("=")[1];
     displayActorName(actorName);
     //console.log(actorName);
-    
+
 }
 
 //Displays actor name in 'showing results for'
-function displayActorName(actorName) { 
+function displayActorName(actorName) {
     //checks for empty actor name
-    if(!actorName){
+    if (!actorName) {
         resultTextEl.textContent = "";
         console.error("Please input an actor name.");
         resultContentEl.innerHTML = '<h3>Please input an actor name.</h3>';
@@ -101,7 +101,7 @@ function findMovieID(actorID) {
                 return;
             }
 
-            for (var i = 0; i < result.results.length && i < 10; i++) {
+            for (var i = 0; i < result.results.length; i++) {
                 movies.push(result.results[i][0].imdb_id);
             }
             findMovies(movies);
@@ -112,10 +112,11 @@ function findMovieID(actorID) {
 function findMovies(movies) {
     //console.log(movies);
     var apiKey = "d63d2ead&s";
-    for (var i = 0; i < movies.length; i++) {
-        var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i];
-
-        //fetches movies object data
+  
+    for (var i = 0; i < movies.length && i < 10 ; i++) {
+        var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
+        var moviesList = [];
+        //fetches movies object data 
         try {
             fetch(queryURL);
         } catch (error) {
@@ -130,21 +131,61 @@ function findMovies(movies) {
                 return response.json();
             })
             .then(function (result) {
-                console.log(result);
-                printResults(result);
+                /**
+                moviesList.push(result);
+                //sorts movies by IMDB rating
+                moviesList = moviesList.sort(function(a,b){
+                    bRating = b.Ratings[0].Value.split("/")[0];
+                    aRating = a.Ratings[0].Value.split("/")[0];
 
+                    return bRating - aRating;
+                });
+                return moviesList;
+            })
+            .then(function(data){
+                printResult(data);
+            });
+            */
+                printResult(result)
             });
     }
 }
-
-function printResults(movie) {
+function printResult(movie) {
+    //console.log(movie);
     var resultCard = document.createElement("div");
     //add bulma css
     resultCard.classList.add("card");
-
     var resultBody = document.createElement("div");
     resultBody.classList.add("card-body");
     resultCard.append(resultBody);
+  
+    var movieNameEl = document.createElement("h3");
+    movieNameEl.textContent = movie.Title;
+    
+    var releaseYearEl = document.createElement('p');
+    releaseYearEl.innerHTML = '<strong> Release Year: </strong> ' + movie.Year + '</br>';
+
+    var ratedEl = document.createElement('p');
+    ratedEl.innerHTML = '<strong> Rated: </strong> ' + movie.Rated + '</br>';
+
+    var runtimeEl = document.createElement('p');
+    runtimeEl.innerHTML = '<strong> Runtime: </strong> ' + movie.Runtime + '</br>';
+
+    var genreEl = document.createElement('p');
+    genreEl.innerHTML = '<strong> Genre: </strong> ' + movie.Genre + '</br>';
+
+    var plotEl = document.createElement('p');
+    plotEl.innerHTML = '<strong> Plot: </strong> ' + movie.Plot + '</br>';
+
+    var imageEl = document.createElement('img');
+    imageEl.src = movie.Poster;
+
+    var ratingsEl = document.createElement('p');
+    ratingsEl.innerHTML = '<strong> IMDB Rating: </strong> ' + movie.Ratings[0].Value + '</br>';
+
+
+    resultBody.append(movieNameEl,imageEl,ratingsEl, releaseYearEl,ratedEl,runtimeEl,genreEl,plotEl);
+    resultContentEl.append(resultCard);
 }
 
 
@@ -152,7 +193,7 @@ function handleSearchFormSubmit(event) {
     event.preventDefault();
 
     var actorName = document.getElementById("actor-name").value;
-    console.log(actorName); 
+    console.log(actorName);
 
     var queryString = './search-results.html?q=' + actorName;
     location.assign(queryString);
