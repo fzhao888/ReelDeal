@@ -1,11 +1,11 @@
 var resultTextEl = document.getElementById("result-text");
 var resultContentEl = document.getElementById("result-content");
 
+
 function getParams() {
     var actorName = document.location.search.split("=")[1];
     displayActorName(actorName);
     //console.log(actorName);
-
 }
 
 //Displays actor name in 'showing results for'
@@ -98,7 +98,6 @@ function findMovieID(actorID) {
         })
         .then(function (result) {
             var movies = [];  
-      
             if (!result.results.length) {
                 console.log("No results found");
                 resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
@@ -108,9 +107,7 @@ function findMovieID(actorID) {
             for (var i = 0; i < result.results.length; i++) {
                 movies.push(result.results[i][0].imdb_id);
             }
-            
-            //movies = result.results.knownForTitles.split(",");
-            console.log(movies);
+      
             findMovies(movies);
         });
 }
@@ -123,7 +120,7 @@ function findMovies(movies) {
 
     for (var i = 0; i < movies.length && i < 10 ; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
-
+      
         //fetches movies object data 
         try {
             fetch(queryURL);
@@ -164,6 +161,14 @@ function storeMovie(movie){
     var movies = JSON.parse(localStorage.getItem("movies"));
     if(!movies){
         movies = [];
+    }else{
+        //sorts movies by IMDB rating
+        movies.sort(function(a,b){
+            bRating = b.Ratings[0].Value.split("/")[0];
+            aRating = a.Ratings[0].Value.split("/")[0];
+
+            return bRating - aRating;
+        });
     }
     
     movies.push(movie);
@@ -222,6 +227,5 @@ function handleSearchFormSubmit(event) {
 }
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
-
 
 getParams();
