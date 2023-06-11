@@ -26,10 +26,6 @@ function displayActorName(actorName) {
         resultTextEl.textContent += fullName[i] + " ";
     } 
     findActorID(actorName);
-    //findMovieID("nm4043618");
-
-    findActorID(actorName);
-
 }
 
 //searches Movies Mini Database API for IMDB id given the actor name
@@ -76,7 +72,7 @@ function findActorID(actorName) {
 //only gets first ten if actor is in more than ten movies  
 function findMovieID(actorID) {
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/id/" + actorID + "/movies_knownFor/";
-    //var queryURL = "https://moviesdatabase.p.rapidapi.com/actors/" + actorID;
+  
     const options = {
         method: 'GET',
         headers: {
@@ -176,7 +172,7 @@ function storeMovie(movie){
 }
 
 function printResult(movie) {
-    //console.log(movie);
+    //console.log(movie); 
     var resultCard = document.createElement("div");
     //add bulma css
     resultCard.classList.add("card");
