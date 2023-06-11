@@ -1,5 +1,6 @@
 var resultTextEl = document.getElementById("result-text");
 var resultContentEl = document.getElementById("result-content");
+var searchFormEl = document.getElementById('search-form');
 
 
 function getParams() {
