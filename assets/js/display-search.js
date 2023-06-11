@@ -1,6 +1,6 @@
 var resultTextEl = document.getElementById("result-text");
 var resultContentEl = document.getElementById("result-content");
-var searchFormEl = document.querySelector(".search-form");
+var searchFormEl = document.querySelector(".search-form");  
 
 function getParams() {
     var actorName = document.location.search.split("=")[1];
@@ -27,6 +27,7 @@ function displayActorName(actorName) {
         resultTextEl.textContent += fullName[i] + " ";
     } 
     findActorID(actorName);
+    //findMovieID("nm4043618");
 
 }
 
@@ -74,13 +75,14 @@ function findActorID(actorName) {
 //only gets first ten if actor is in more than ten movies  
 function findMovieID(actorID) {
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/id/" + actorID + "/movies_knownFor/";
-   
+    //var queryURL = "https://moviesdatabase.p.rapidapi.com/actors/" + actorID;
     const options = {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': '2e0e185cc6msh24c320d28584a97p1e3333jsnc9b7533e3e8a',
-            'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'
-        }
+            'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'  
+		//     'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+         }
     };
 
     //fetches movies list
@@ -104,10 +106,13 @@ function findMovieID(actorID) {
                 resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
                 return;
             }
-
+            
             for (var i = 0; i < result.results.length; i++) {
                 movies.push(result.results[i][0].imdb_id);
             }
+            
+            //movies = result.results.knownForTitles.split(",");
+            console.log(movies);
             findMovies(movies);
         });
 }
@@ -116,10 +121,10 @@ function findMovieID(actorID) {
 function findMovies(movies) {
     //console.log(movies);
     var apiKey = "d63d2ead&s";
-  
+    var moviesList = [];
+
     for (var i = 0; i < movies.length && i < 10 ; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
-        var moviesList = [];
         //fetches movies object data 
         try {
             fetch(queryURL);
@@ -130,31 +135,45 @@ function findMovies(movies) {
         fetch(queryURL)
             .then(function (response) {
                 if (!response.ok) {
-                    return response.json();
+                    throw response.json();
                 }
                 return response.json();
             })
             .then(function (result) {
-                /**
-                moviesList.push(result);
+                //moviesList.push(result);
                 //sorts movies by IMDB rating
-                moviesList = moviesList.sort(function(a,b){
-                    bRating = b.Ratings[0].Value.split("/")[0];
-                    aRating = a.Ratings[0].Value.split("/")[0];
+                // moviesList = moviesList.sort(function(a,b){
+                //     bRating = b.Ratings[0].Value.split("/")[0];
+                //     aRating = a.Ratings[0].Value.split("/")[0];
 
-                    return bRating - aRating;
-                });
-                return moviesList;
-            })
-            .then(function(data){
-                printResult(data);
-            });
-            */
-                printResult(result)
-            });
-    }
+                //     return bRating - aRating;
+                // });
+               // return moviesList;
+               storeMovie(result);
+             });
+            // .then(function(data){ 
+            //     printResult(data);
+            // });
+            
+                
+    //         });
+     }
 }
+
+//stores previously recommended movies in local storage
+function storeMovie(movie){ 
+    var movies = JSON.parse(localStorage.getItem("movies"));
+    if(!movies){
+        movies = [];
+    }
+    
+    movies.push(movie);
+    localStorage.setItem("movies",JSON.stringify(movies));
+    printResult(movie);
+}
+
 function printResult(movie) { 
+    console.log(localStorage.getItem("movies"));
     var resultCard = document.createElement("div");
     //add bulma css
     resultCard.classList.add("card");
