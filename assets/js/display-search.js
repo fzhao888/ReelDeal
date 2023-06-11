@@ -25,7 +25,8 @@ function displayActorName(actorName) {
 
     for (var i = 0; i < fullName.length; i++) {
         resultTextEl.textContent += fullName[i] + " ";
-    }
+    } 
+    findActorID(actorName);
 
     findActorID(actorName);
 
@@ -45,7 +46,7 @@ function findActorID(actorName) {
 
     //fetches actorID
     try {
-        fetch(queryURL, options);
+        fetch(queryURL, options); 
     } catch (error) {
         console.error(error);
     }
@@ -53,12 +54,18 @@ function findActorID(actorName) {
     fetch(queryURL, options)
         .then(function (response) {
             if (!response.ok) {
-                throw response.json();
+                console.log("No results found");
+                resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
+                return;
             }
             return response.json();
         })
-        .then(function (result) {
+        .then(function (result) { 
+            if(!result){ 
+                return;
+            }
             var actorID = result.results[0].imdb_id;
+            console.log(result.results);
             findMovieID(actorID);
 
         });
@@ -69,6 +76,7 @@ function findActorID(actorName) {
 //only gets first ten if actor is in more than ten movies  
 function findMovieID(actorID) {
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/id/" + actorID + "/movies_knownFor/";
+
     const options = {
         method: 'GET',
         headers: {
@@ -150,8 +158,9 @@ function findMovies(movies) {
             });
     }
 }
+
 function printResult(movie) {
-    //console.log(movie);
+    //console.log(movie); 
     var resultCard = document.createElement("div");
     //add bulma css
     resultCard.classList.add("card");
