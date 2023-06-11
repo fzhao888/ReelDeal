@@ -1,6 +1,5 @@
 var resultTextEl = document.getElementById("result-text");
 var resultContentEl = document.getElementById("result-content");
-var searchFormEl = document.querySelector(".search-form");  
 
 function getParams() {
     var actorName = document.location.search.split("=")[1];
@@ -28,6 +27,8 @@ function displayActorName(actorName) {
     } 
     findActorID(actorName);
     //findMovieID("nm4043618");
+
+    findActorID(actorName);
 
 }
 
@@ -101,6 +102,7 @@ function findMovieID(actorID) {
         })
         .then(function (result) {
             var movies = [];  
+      
             if (!result.results.length) {
                 console.log("No results found");
                 resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
@@ -125,6 +127,7 @@ function findMovies(movies) {
 
     for (var i = 0; i < movies.length && i < 10 ; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
+
         //fetches movies object data 
         try {
             fetch(queryURL);
@@ -172,8 +175,8 @@ function storeMovie(movie){
     printResult(movie);
 }
 
-function printResult(movie) { 
-    console.log(localStorage.getItem("movies"));
+function printResult(movie) {
+    //console.log(movie);
     var resultCard = document.createElement("div");
     //add bulma css
     resultCard.classList.add("card");
