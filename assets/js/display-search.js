@@ -1,12 +1,12 @@
 var resultTextEl = document.getElementById("result-text");
 var resultContentEl = document.getElementById("result-content");
-var searchFormEl = document.querySelector(".search-form");  
+var searchFormEl = document.querySelector(".search-form");
+
 
 function getParams() {
     var actorName = document.location.search.split("=")[1];
     displayActorName(actorName);
     //console.log(actorName);
-
 }
 
 //Displays actor name in 'showing results for'
@@ -28,6 +28,8 @@ function displayActorName(actorName) {
     } 
     findActorID(actorName);
     //findMovieID("nm4043618");
+
+    findActorID(actorName);
 
 }
 
@@ -75,7 +77,7 @@ function findActorID(actorName) {
 //only gets first ten if actor is in more than ten movies  
 function findMovieID(actorID) {
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/id/" + actorID + "/movies_knownFor/";
-    //var queryURL = "https://moviesdatabase.p.rapidapi.com/actors/" + actorID;
+
     const options = {
         method: 'GET',
         headers: {
@@ -100,19 +102,20 @@ function findMovieID(actorID) {
             return response.json();
         })
         .then(function (result) {
-            var movies = [];  
+
+            var movies = [];
+            //console.log(result);
+      
             if (!result.results.length) {
                 console.log("No results found");
                 resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
                 return;
             }
-            
+
             for (var i = 0; i < result.results.length; i++) {
                 movies.push(result.results[i][0].imdb_id);
             }
-            
-            //movies = result.results.knownForTitles.split(",");
-            console.log(movies);
+      
             findMovies(movies);
         });
 }
@@ -121,10 +124,10 @@ function findMovieID(actorID) {
 function findMovies(movies) {
     //console.log(movies);
     var apiKey = "d63d2ead&s";
-    var moviesList = [];
-
+  
     for (var i = 0; i < movies.length && i < 10 ; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
+       
         //fetches movies object data 
         try {
             fetch(queryURL);
@@ -140,6 +143,7 @@ function findMovies(movies) {
                 return response.json();
             })
             .then(function (result) {
+
                 //moviesList.push(result);
                 //sorts movies by IMDB rating
                 // moviesList = moviesList.sort(function(a,b){
@@ -180,8 +184,8 @@ function storeMovie(movie){
     printResult(movie);
 }
 
-function printResult(movie) { 
-    console.log(localStorage.getItem("movies"));
+function printResult(movie) {
+    //console.log(movie);
     var resultCard = document.createElement("div");
     //add bulma css
     resultCard.classList.add("card");
@@ -231,6 +235,5 @@ function handleSearchFormSubmit(event) {
 }
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
-
 
 getParams();
