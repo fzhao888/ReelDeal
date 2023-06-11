@@ -165,6 +165,14 @@ function storeMovie(movie){
     var movies = JSON.parse(localStorage.getItem("movies"));
     if(!movies){
         movies = [];
+    }else{
+        //sorts movies by IMDB rating
+        movies.sort(function(a,b){
+            bRating = b.Ratings[0].Value.split("/")[0];
+            aRating = a.Ratings[0].Value.split("/")[0];
+
+            return bRating - aRating;
+        });
     }
     
     movies.push(movie);
