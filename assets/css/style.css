@@ -4,6 +4,25 @@ h1 {
     color: white;
     font-size: 24px;
     font-weight: bold;
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    background-image: linear-gradient(to right, white, red);
+    color: white;
+    font-size: 24px; 
+}
+
+.navbar a.navbar-item {
+    color: white;
+    transition: box-shadow 0.3s;
+}
+
+.navbar a.navbar-item:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
 }
 
 .submit {
