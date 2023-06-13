@@ -1,0 +1,49 @@
+h1 {
+    text-align: center;
+    background-image: linear-gradient(to right, white, red);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.submit {
+    background-color: red;
+    color: white;
+
+}
+
+#actor-name {
+    width: 25%
+}
+
+#landing-page {
+    text-align: center;
+    font-size: 24px;
+    background-image: linear-gradient(to right, white, red);
+    color: white;
+    font-weight: bold;
+}
+
+#results-page {
+    text-align: center;
+    font-weight: bold;
+    background-image: linear-gradient(to right, white, red);
+    color: white;
+    font-size: 24px;
+}
+
+#search-form {
+    text-align: center;
+    font-size: 24px;
+    background-image: linear-gradient(to right, white, red);
+    color: white;
+    font-weight: bold;
+}
+
+#last-viewed {
+    text-align: center;
+    font-size: 24px;
+    background-image: linear-gradient(to right, white, red);
+    color: white;
+    font-weight: bold;   
+}
