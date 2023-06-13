@@ -18,7 +18,6 @@ function displayActorName(actorName) {
         searchTextEl.textContent = "";
         console.error("Please input an actor name.");
         resultPageEl.innerHTML = '<h3>Please input an actor name.</h3>';
-
         return;
     }//end of checking for empty actor name
 
@@ -63,11 +62,11 @@ function findActorID(actorName) {
                     resultTextEl.textContent += fullName[i] + " ";
                 }
                 resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
-                return;
-            }
 
-            console.log(result.results);
+
+            //console.log(result.results);
             var actorID = result.results[0].imdb_id;
+
             resultTextEl.textContent = result.results[0].name;
             findMovieID(actorID);
         });
