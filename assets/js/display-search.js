@@ -8,7 +8,6 @@ var searchFormEl = document.getElementById('search-form');
 function getParams() {
     var actorName = document.location.search.split("=")[1];
     displayActorName(actorName);
-    //console.log(actorName);
 }
 
 //Displays actor name in 'showing results for'
@@ -62,16 +61,16 @@ function findActorID(actorName) {
                     resultTextEl.textContent += fullName[i] + " ";
                 }
                 resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
-
+            }
 
             //console.log(result.results);
             var actorID = result.results[0].imdb_id;
-
+                
             resultTextEl.textContent = result.results[0].name;
             findMovieID(actorID);
+            
         });
 }
-
 
 //search Movies Mini Database API to find movies IMBD id with the actor using the IMDB id
 //only gets first ten if actor is in more than ten movies  
@@ -115,7 +114,7 @@ function findMovies(movies) {
     //console.log(movies);
     var apiKey = "d63d2ead&s";
     var moviesList = [];
-
+     
     for (var i = 0; i < movies.length && i < 10; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
 
@@ -128,6 +127,7 @@ function findMovies(movies) {
                 return response.json();
             })
             .then(function (result) {
+                console.log(result);
                 printResult(result);
             });
     }
@@ -159,7 +159,7 @@ function storeMovie(movie) {
 
 //display movie data
 function printResult(movie) {
-    //console.log(movie); 
+    console.log(movie); 
     var resultCard = document.createElement("div");
     //add bulma css
     resultCard.classList.add("card");
@@ -207,7 +207,6 @@ function handleSearchFormSubmit(event) {
     event.preventDefault();
 
     var actorName = document.getElementById("actor-name").value;
-    console.log(actorName);
 
     var queryString = './search-results.html?q=' + actorName;
     location.assign(queryString);
