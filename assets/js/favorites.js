@@ -1,6 +1,7 @@
 var storedMovies = JSON.parse(localStorage.getItem("movies"));
 var favoritesContentEl = document.getElementById("favorites-page");
 
+//displays favorites
 if (!storedMovies) {
     storedMovies = null;
 } else {

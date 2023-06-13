@@ -18,7 +18,6 @@ function displayActorName(actorName) {
         searchTextEl.textContent = "";
         console.error("Please input an actor name.");
         resultPageEl.innerHTML = '<h3>Please input an actor name.</h3>';
-        
         return;
     }//end of checking for empty actor name
 
@@ -49,18 +48,25 @@ function findActorID(actorName) {
     fetch(queryURL, options)
         .then(function (response) {
             if (!response.ok) {
-                console.log("No results found");
-                resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
-                return;
+                throw response.json();
             }
             return response.json();
         })
         .then(function (result) {
-            if (!result) {
-                return;
-            }
+            if (result.results.length === 0) {
+                var names = actorName.split("/");
+                var fullName = names[0].split("%20");
+                resultTextEl.textContent = "";
+                
+                for (var i = 0; i < fullName.length; i++) {
+                    resultTextEl.textContent += fullName[i] + " ";
+                }
+                resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
+
+
+            //console.log(result.results);
             var actorID = result.results[0].imdb_id;
-            console.log(result.results);
+
             resultTextEl.textContent = result.results[0].name;
             findMovieID(actorID);
         });
@@ -151,6 +157,7 @@ function storeMovie(movie) {
     localStorage.setItem("movies", JSON.stringify(movies));
 }
 
+//display movie data
 function printResult(movie) {
     //console.log(movie); 
     var resultCard = document.createElement("div");
