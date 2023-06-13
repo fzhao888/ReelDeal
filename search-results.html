@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reel Deal</title>
-  <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
@@ -18,8 +18,10 @@
         <li> <a href="./favorites.html">Favorites</a></li>
       </ul>
     </nav>
-    
-    <form class="search-form" id="search-form">
+  </header>
+
+  <main>
+    <form class="search-form" id="search-form
         <input type="text" id="actor-name" placeholder="Search for an actor..."/>
         <button type="submit" class="" >Search</button>
       </form> 
@@ -30,11 +32,12 @@
       <h2>Showing results for <span id="result-text"></span></h2>
       <div id="result-content"></div>
     </section>
-
   </main> 
   
-  <footer>
-    <p>&copy; 2023 Reel Deal. All rights reserved.</p>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>&copy; 2023 Reel Deal. All rights reserved.</p>
+    </div>
   </footer>
 
   <script src="./assets/js/display-search.js"></script>
