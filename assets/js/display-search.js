@@ -159,7 +159,6 @@ function storeMovie(movie) {
 
 //display movie data
 function printResult(movie) {
-    console.log(movie); 
     var resultCard = document.createElement("div");
     //add bulma css
     resultCard.classList.add("card");
