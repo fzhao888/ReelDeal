@@ -1,5 +1,7 @@
 var resultTextEl = document.getElementById("result-text");
+var searchTextEl = document.getElementById("search-text");
 var resultContentEl = document.getElementById("result-content");
+var resultPageEl = document.getElementById("results-page");
 var searchFormEl = document.getElementById('search-form');
 
 
@@ -13,9 +15,10 @@ function getParams() {
 function displayActorName(actorName) {
     //checks for empty actor name
     if (!actorName) {
-        resultTextEl.textContent = "";
+        searchTextEl.textContent = "";
         console.error("Please input an actor name.");
-        resultContentEl.innerHTML = '<h3>Please input an actor name.</h3>';
+        resultPageEl.innerHTML = '<h3>Please input an actor name.</h3>';
+        
         return;
     }//end of checking for empty actor name
 
@@ -24,13 +27,14 @@ function displayActorName(actorName) {
     var fullName = names[0].split("%20");
 
     for (var i = 0; i < fullName.length; i++) {
-        resultTextEl.textContent += fullName[i] + " ";
-    } 
+        searchTextEl.textContent += fullName[i] + " ";
+    }
     findActorID(actorName);
 }
 
 //searches Movies Mini Database API for IMDB id given the actor name
 function findActorID(actorName) {
+    resultTextEl.textContent = "Loading";
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/imdb_id_byName/" + actorName;
 
     const options = {
@@ -42,12 +46,6 @@ function findActorID(actorName) {
     };
 
     //fetches actorID
-    try {
-        fetch(queryURL, options); 
-    } catch (error) {
-        console.error(error);
-    }
-
     fetch(queryURL, options)
         .then(function (response) {
             if (!response.ok) {
@@ -57,14 +55,14 @@ function findActorID(actorName) {
             }
             return response.json();
         })
-        .then(function (result) { 
-            if(!result){ 
+        .then(function (result) {
+            if (!result) {
                 return;
             }
             var actorID = result.results[0].imdb_id;
             console.log(result.results);
+            resultTextEl.textContent = result.results[0].name;
             findMovieID(actorID);
-
         });
 }
 
@@ -73,23 +71,16 @@ function findActorID(actorName) {
 //only gets first ten if actor is in more than ten movies  
 function findMovieID(actorID) {
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/id/" + actorID + "/movies_knownFor/";
-  
+
     const options = {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': '2e0e185cc6msh24c320d28584a97p1e3333jsnc9b7533e3e8a',
-            'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'  
-		//     'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
-         }
+            'X-RapidAPI-Host': 'moviesminidatabase.p.rapidapi.com'
+        }
     };
 
     //fetches movies list
-    try {
-        fetch(queryURL, options);
-    } catch (error) {
-        console.error(error);
-    }
-
     fetch(queryURL, options)
         .then(function (response) {
             if (!response.ok) {
@@ -98,17 +89,17 @@ function findMovieID(actorID) {
             return response.json();
         })
         .then(function (result) {
-            var movies = [];  
+            var movies = [];
             if (!result.results.length) {
                 console.log("No results found");
                 resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
                 return;
             }
-            
+
             for (var i = 0; i < result.results.length; i++) {
                 movies.push(result.results[i][0].imdb_id);
             }
-      
+
             findMovies(movies);
         });
 }
@@ -119,16 +110,10 @@ function findMovies(movies) {
     var apiKey = "d63d2ead&s";
     var moviesList = [];
 
-    for (var i = 0; i < movies.length && i < 10 ; i++) {
+    for (var i = 0; i < movies.length && i < 10; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
-      
-        //fetches movies object data 
-        try {
-            fetch(queryURL);
-        } catch (error) {
-            console.error(error);
-        }
 
+        //fetches movies object data 
         fetch(queryURL)
             .then(function (response) {
                 if (!response.ok) {
@@ -137,44 +122,33 @@ function findMovies(movies) {
                 return response.json();
             })
             .then(function (result) {
-                //moviesList.push(result);
-                //sorts movies by IMDB rating
-                // moviesList = moviesList.sort(function(a,b){
-                //     bRating = b.Ratings[0].Value.split("/")[0];
-                //     aRating = a.Ratings[0].Value.split("/")[0];
-
-                //     return bRating - aRating;
-                // });
-               // return moviesList;
-               storeMovie(result);
-             });
-            // .then(function(data){ 
-            //     printResult(data);
-            // });
-            
-                
-    //         });
-     }
+                printResult(result);
+            });
+    }
 }
 
 //stores previously recommended movies in local storage
-function storeMovie(movie){ 
+function storeMovie(movie) {
     var movies = JSON.parse(localStorage.getItem("movies"));
-    if(!movies){
-        movies = [];
-    }else{
-        //sorts movies by IMDB rating
-        movies.sort(function(a,b){
-            bRating = b.Ratings[0].Value.split("/")[0];
-            aRating = a.Ratings[0].Value.split("/")[0];
+    console.log(movies);
 
-            return bRating - aRating;
-        });
+    if (!movies) {
+        movies = [];
+    } else {
+        //checks for dupes:
+        var storedMoviesIDs = [];
+
+        for (var i = 0; i < movies.length; i++) {
+            storedMoviesIDs.push(movies[i].imdbID);
+        }
+
+        if (storedMoviesIDs.includes(movie.imdbID)) {
+            return;
+        }
     }
-    
+
     movies.push(movie);
-    localStorage.setItem("movies",JSON.stringify(movies));
-    printResult(movie);
+    localStorage.setItem("movies", JSON.stringify(movies));
 }
 
 function printResult(movie) {
@@ -185,10 +159,10 @@ function printResult(movie) {
     var resultBody = document.createElement("div");
     resultBody.classList.add("card-body");
     resultCard.append(resultBody);
-  
+
     var movieNameEl = document.createElement("h3");
     movieNameEl.textContent = movie.Title;
-    
+
     var releaseYearEl = document.createElement('p');
     releaseYearEl.innerHTML = '<strong> Release Year: </strong> ' + movie.Year + '</br>';
 
@@ -210,8 +184,14 @@ function printResult(movie) {
     var ratingsEl = document.createElement('p');
     ratingsEl.innerHTML = '<strong> IMDB Rating: </strong> ' + movie.Ratings[0].Value + '</br>';
 
+    var saveBtn = document.createElement('button');
+    saveBtn.classList.add("saveBtn"); //style with bulma
+    saveBtn.textContent = "Save";
+    saveBtn.addEventListener('click', function () {
+        storeMovie(movie);
+    });
 
-    resultBody.append(movieNameEl,imageEl,ratingsEl, releaseYearEl,ratedEl,runtimeEl,genreEl,plotEl);
+    resultBody.append(movieNameEl, imageEl, ratingsEl, releaseYearEl, ratedEl, runtimeEl, genreEl, plotEl, saveBtn);
     resultContentEl.append(resultCard);
 }
 
