@@ -29,13 +29,14 @@ Being able to search a certain actor and it pops up a list of their movies.
 A save button to add a movie you may want to watch to a favorites section where you can also view. Also a remove button to remove a movie from your favorites section if you've watched it or just don't like it anymore.
 
 ## Screenshot
-Homepage
+
+### Homepage
 ![screenshot of Homepage](assets/images/Homepage.png) 
 
-Search Results page
+### Search Results page
 ![screenshot of search results](assets/images/search-results.png) 
 
-Favorites page
+### Favorites page
 ![screenshot of favorites](assets/images/favorites.png) 
 
 ## Deployment
