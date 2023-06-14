@@ -2,15 +2,26 @@ var storedMovies = JSON.parse(localStorage.getItem("movies"));
 var favoritesContentEl = document.getElementById("favorites-page");
 
 //displays favorites
-if(!storedMovies){
-    storedMovies = null;
-}else if (storedMovies.length === 0) {
-  favoritesContentEl.innerHTML = "You do not have any favorites yet.";
-  favoritesContentEl.style.fontSize = "24px";
-  favoritesContentEl.style.textAlign = "center";
+if (!storedMovies || storedMovies.length === 0) {
+    var noFavoritesEl = document.createElement("div"); 
+    noFavoritesEl.innerHTML = "Please add a movie to favorites to save this dog.";
+    noFavoritesEl.style.fontSize = "24px";
+    noFavoritesEl.style.textAlign = "center";
+    noFavoritesEl.style.paddingBottom = "20px";
+    
+    
+    var imgDiv = document.createElement('div');
+    var nina = document.createElement("img");
+    nina.src = "./assets/images/sad-nina.png";
+    imgDiv.append(nina);
+    
+    imgDiv.style.textAlign = "center";
+
+    favoritesContentEl.append(noFavoritesEl,imgDiv);
+
 } else {
     for (var i = 0; i < storedMovies.length; i++) {
-        var movie = storedMovies[i]; 
+        var movie = storedMovies[i];
 
         var resultCard = document.createElement("div");
         //add bulma css
@@ -76,7 +87,7 @@ if(!storedMovies){
         mediaContent.append(ratingsEl, releaseYearEl, ratedEl, runtimeEl, genreEl, plotEl);
 
         var removeBtn = document.createElement('button');
-        var buttonID = removeBtn.setAttribute('id',i); 
+        var buttonID = removeBtn.setAttribute('id', i);
 
         removeBtn.classList.add("button", "is-medium", "is-danger"); //style with bulma
         removeBtn.textContent = "Remove";
@@ -84,7 +95,7 @@ if(!storedMovies){
 
         removeBtn.addEventListener('click', function (event) {
             var movies = JSON.parse(localStorage.getItem("movies"));
-            console.log(typeof(event.target.id));
+            console.log(typeof (event.target.id));
 
             if (!movies) {
                 movies = [];
@@ -93,8 +104,8 @@ if(!storedMovies){
                 console.log(movies);
                 for (var i = 0; i < movies.length; i++) {
                     if (i === parseInt(event.target.id)) {
-                        movies.splice(i,1);
-                    } 
+                        movies.splice(i, 1);
+                    }
                 }
             }
 
