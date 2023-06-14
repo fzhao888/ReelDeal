@@ -135,9 +135,8 @@ function findMovies(movies) {
 
 //stores previously recommended movies in local storage
 function storeMovie(movie) {
-    var movies = JSON.parse(localStorage.getItem("movies"));
-    console.log(movies);
-
+    var movies = JSON.parse(localStorage.getItem("movies")); 
+    
     if (!movies) {
         movies = [];
     } else {
