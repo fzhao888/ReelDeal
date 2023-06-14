@@ -33,5 +33,5 @@ A save button to add a movie you may want to watch to a favorites section where 
 ![screenshot of search results](assets/images/search-results.png) 
 ![screenshot of favorites](assets/images/favorites.png) 
 
-#Deployement
+#Deployment
 https://fzhao888.github.io/ReelDeal/
