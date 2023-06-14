@@ -14,10 +14,10 @@ This webpage can be used to find movies on any actor you want to see. Also has a
 
 ## Credits
 
-Frank-fzhao88
-Louis-Lokistarwind
-Peter-PeterOste
-Corey-gulledgecorey
+Frank Zhao - fzhao88 <br>
+Louis Antolin - Lokistarwind <br>
+Peter Ostertag - PeterOste <br>
+Corey Gulledge - gulledgecorey <br>
 
 ## License
 
