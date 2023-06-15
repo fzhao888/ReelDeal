@@ -2,7 +2,7 @@
 
 ## Description
 
-This webpage was designed to make searcging for movies easier. When you input an actors name and click search then a list of ten movies with that actor will appear. Each movie will have a picture, release year, run time, etc.. that pertain to that movie. If you find a movie you like you can save it clicking the save button. If you click on the favorites bar you will notice that saved movies get added to it. If you decide that you don't want to watch the movie anymore you can remove it by clicking the remove button.
+This webpage was designed to make searching for movies easier. When you input an actors name and click search, then a list of movies with that actor will appear. Each movie will have a picture, release year, run time, etc.. that pertain to that movie. If you find a movie you like, you can save it by clicking the save button. If you click on the favorites bar, you will notice that saved movies get added to it. If you decide that you don't want to watch the movie anymore, you can remove it by clicking the remove button.
 
 ## Installation
 
