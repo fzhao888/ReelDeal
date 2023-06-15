@@ -3,21 +3,21 @@ var favoritesContentEl = document.getElementById("favorites-page");
 
 //displays favorites
 if (!storedMovies || storedMovies.length === 0) {
-    var noFavoritesEl = document.createElement("div"); 
+    var noFavoritesEl = document.createElement("div");
     noFavoritesEl.innerHTML = "Please add a movie to favorites to save this dog.";
     noFavoritesEl.style.fontSize = "24px";
     noFavoritesEl.style.textAlign = "center";
     noFavoritesEl.style.paddingBottom = "20px";
-    
-    
+
+
     var imgDiv = document.createElement('div');
     var nina = document.createElement("img");
     nina.src = "./assets/images/sad-nina.png";
     imgDiv.append(nina);
-    
+
     imgDiv.style.textAlign = "center";
 
-    favoritesContentEl.append(noFavoritesEl,imgDiv);
+    favoritesContentEl.append(noFavoritesEl, imgDiv);
 
 } else {
     for (var i = 0; i < storedMovies.length; i++) {
@@ -54,6 +54,7 @@ if (!storedMovies || storedMovies.length === 0) {
 
         var imageFigure = document.createElement("figure");
         imageFigure.classList.add("image");
+        leftImageDiv.style.width = "20%";
         leftImageDiv.append(imageFigure);
 
         var imageEl = document.createElement('img');
@@ -89,7 +90,7 @@ if (!storedMovies || storedMovies.length === 0) {
         var removeBtn = document.createElement('button');
         var buttonID = removeBtn.setAttribute('id', i);
 
-        removeBtn.classList.add("button", "is-medium", "is-danger"); //style with bulma
+        removeBtn.classList.add("button", "is-medium", "is-danger","is-responsive"); //style with bulma
         removeBtn.textContent = "Remove";
 
 

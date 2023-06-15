@@ -127,7 +127,6 @@ function findMovies(movies) {
                 return response.json();
             })
             .then(function (result) {
-                console.log(result);
                 printResult(result);
             });
     }
@@ -186,16 +185,18 @@ function printResult(movie) {
 
     var leftImageDiv = document.createElement("div");
     leftImageDiv.classList.add("media-left");
+    leftImageDiv.style.width = "20%";
     mediaDiv.append(leftImageDiv);
 
 
     var imageFigure = document.createElement("figure");
-    imageFigure.classList.add("image");
+    imageFigure.classList.add("image"); 
     leftImageDiv.append(imageFigure);
 
     var imageEl = document.createElement('img'); 
     imageEl.src = movie.Poster;
     imageFigure.append(imageEl);
+    
     
     var mediaContent = document.createElement("div");
     mediaContent.classList.add("media-content");
@@ -224,7 +225,7 @@ function printResult(movie) {
     mediaContent.append(ratingsEl, releaseYearEl, ratedEl, runtimeEl, genreEl, plotEl);  
  
     var saveBtn = document.createElement('button');
-    saveBtn.classList.add("button","is-medium", "is-danger"); //style with bulma
+    saveBtn.classList.add("button","is-medium", "is-danger","is-responsive"); //style with bulma
     saveBtn.textContent = "Save";
     
     saveBtn.addEventListener('click', function () {
