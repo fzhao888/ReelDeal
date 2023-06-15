@@ -115,7 +115,7 @@ function findMovies(movies) {
     var apiKey = "d63d2ead&s";
     var moviesList = [];
      
-    for (var i = 0; i < movies.length && i < 10; i++) {
+    for (var i = 0; i < movies.length; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
 
         //fetches movies object data 
