@@ -37,7 +37,12 @@ function displayActorName(actorName) {
 
 //searches Movies Mini Database API for IMDB id given the actor name
 function findActorID(actorName) {
-    resultTextEl.textContent = "Loading";
+    var loadingBtn = document.createElement("a");
+    loadingBtn.classList.add("button","is-loading");
+    resultTextEl.append(loadingBtn);
+
+    loadingBtn.style.backgroundColor = "chocolate";
+
     var queryURL = "https://moviesminidatabase.p.rapidapi.com/actor/imdb_id_byName/" + actorName;
 
     const options = {
@@ -180,8 +185,7 @@ function printResult(movie) {
  
     
     var resultBody = document.createElement("div");
-    resultBody.classList.add("card-content", "is-size-5-mobile", "is-size-5-touch", "is-size-5-tablet", "is-size-3-desktop", "is-size-3-widescreen", "is-size-3-fullhd");
-    resultBody.style.fontSize = "large";
+    resultBody.classList.add("card-content", "is-size-5-mobile", "is-size-5-touch", "is-size-5-tablet", "is-size-5-desktop", "is-size-5-widescreen", "is-size-5-fullhd");
     resultCard.append(resultBody);
 
 
