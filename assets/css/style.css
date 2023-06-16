@@ -14,15 +14,20 @@ h1 {
     background-color: chocolate;
     color: white;
     font-size: 24px; 
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .navbar a.navbar-item {
     color: white;
-    transition: box-shadow 0.3s;
+    padding: 0px 75px;
 }
 
-.navbar a.navbar-item:hover {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+.navbar a.navbar-item.active:hover {
+    background-color: white;
+    color: chocolate;
+    font-weight: bold;
+    border-radius: 100px;
 }
 
 .submit {
@@ -41,6 +46,10 @@ h1 {
     background-color: chocolate;
     color: white;
     font-weight: bold;
+}
+
+.backBtnDiv {
+    text-align: center;
 }
 
 #search-form .button{ 
