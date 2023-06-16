@@ -6,7 +6,6 @@ var eMessage = document.getElementById("e-message");
 
 function handleSearchFormSubmit(event){
     event.preventDefault();
-    //errorEl.textContent = "";
     var actorName = document.getElementById("actor-name").value; 
     console.log(actorName);
     if(!actorName){

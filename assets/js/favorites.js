@@ -91,7 +91,7 @@ if (!storedMovies || storedMovies.length === 0) {
         var removeBtn = document.createElement('button');
         var buttonID = removeBtn.setAttribute('id', i);
 
-        removeBtn.classList.add("button", "is-medium", "is-dark","is-responsive"); //style with bulma
+        removeBtn.classList.add("button", "is-medium", "is-dark", "is-responsive"); //style with bulma
         removeBtn.textContent = "Remove";
 
 
@@ -123,6 +123,14 @@ if (!storedMovies || storedMovies.length === 0) {
         cardFooter.style.paddingTop = "8px";
         cardFooter.style.paddingBottom = "20px";
         cardFooter.append(removeBtn);
+
+
+        //change background color of result card
+        resultBody.style.backgroundColor = "skyblue";
+        resultHeader.style.backgroundColor = "lightgreen";
+        cardFooter.style.backgroundColor = "lightgreen";
+        resultCard.style.outlineStyle = "dashed";
+        resultCard.style.outlineColor = "navy";
 
         favoritesContentEl.append(resultCard);
     }
