@@ -180,7 +180,7 @@ function printResult(movie) {
  
     
     var resultBody = document.createElement("div");
-   resultBody.classList.add("card-content", "is-size-5-mobile", "is-size-5-touch", "is-size-5-tablet", "is-size-3-desktop", "is-size-3-widescreen", "is-size-3-fullhd");
+    resultBody.classList.add("card-content", "is-size-5-mobile", "is-size-5-touch", "is-size-5-tablet", "is-size-3-desktop", "is-size-3-widescreen", "is-size-3-fullhd");
     resultBody.style.fontSize = "large";
     resultCard.append(resultBody);
 
@@ -229,7 +229,7 @@ function printResult(movie) {
 
     mediaContent.style.textAlign = "left";
     mediaContent.append(ratingsEl, releaseYearEl, ratedEl, runtimeEl, genreEl, plotEl);  
- 
+   
     var saveBtn = document.createElement('button');
     saveBtn.classList.add("button","is-medium", "is-dark","is-responsive"); //style with bulma
     saveBtn.textContent = "Save";
@@ -246,6 +246,13 @@ function printResult(movie) {
     cardFooter.style.paddingTop = "8px";
     cardFooter.style.paddingBottom = "20px";
     cardFooter.append(saveBtn);
+
+    //change background color of result card
+    resultBody.style.backgroundColor = "skyblue";
+    resultHeader.style.backgroundColor = "lightgreen";
+    cardFooter.style.backgroundColor = "lightgreen";
+    resultCard.style.outlineStyle = "dashed";
+    resultCard.style.outlineColor = "navy";
 
     resultContentEl.append(resultCard);
 }

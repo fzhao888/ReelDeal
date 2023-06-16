@@ -68,6 +68,10 @@ h1 {
     font-weight: bold;
 }
 
+#search-form .input{
+    width: 100%;
+}
+
 #last-viewed {
     text-align: center;
     font-size: 24px;
@@ -93,33 +97,20 @@ footer {
 
 #error-message{
     font-size: 20px;
+} 
+ 
+.backBtnDiv{
+    background-color: chocolate; 
 }
 
-/*
-@media(max-width: 1024px){
-    #actor-name{
+#back{
+    background-color: yellow;
+    color: black;
+}
+
+@media(min-width: 720px){
+    #search-form .input{
         width: 50%;
     }
 }
 
-@media(max-width: 769px){
-    #actor-name{
-        width: 50%;
-    }
-}
-
-@media(max-width:768px){
-    #actor-name{
-        width: 70%;
-    }
-}
-
-@media (max-width: 450px) { 
-    #actor-name {
-        width: 100%;
-    }
-    .place-holder{
-        width: 100%;
-    }
-  }
-  */
