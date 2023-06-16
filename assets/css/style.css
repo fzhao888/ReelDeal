@@ -93,4 +93,10 @@ footer {
       background-image: none;
       background-color: brown;
     }
+    #actor-name {
+        width: 100%;
+    }
+    .place-holder{
+        width: 100%;
+    }
   }
