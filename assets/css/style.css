@@ -19,20 +19,22 @@ h1 {
 }
 
 .navbar-brand {
-    padding: 20px;
+    padding: 15px;
 }
 
 .navbar a.navbar-item {
     color: white;
+    background-color: brown;
+    border-radius: 100px;
+    margin: 0 20px;
 }
 
 .navbar a.navbar-item.active:hover {
     background-color: white;
-    color: chocolate;
+    color: black;
     font-weight: bold;
     border-radius: 100px;
 }
-
 
 .submit {
     background-color: chocolate;
@@ -89,6 +91,7 @@ body {
 
 footer {
     margin-top: auto;
+    font-weight: bold;
 }
 
 .place-holder {
@@ -110,6 +113,11 @@ footer {
     background-color: brown;
     color: white;
     border: none;
+}
+
+#back:hover {
+    background-color: white;
+    color: black;
 }
 
 .footer {
