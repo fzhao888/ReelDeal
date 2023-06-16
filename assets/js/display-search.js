@@ -174,7 +174,7 @@ function printResult(movie) {
  
     
     var resultBody = document.createElement("div");
-    resultBody.classList.add("card-content");
+   resultBody.classList.add("card-content", "is-size-5-mobile", "is-size-5-touch", "is-size-5-tablet", "is-size-3-desktop", "is-size-3-widescreen", "is-size-3-fullhd");
     resultBody.style.fontSize = "large";
     resultCard.append(resultBody);
 
