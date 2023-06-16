@@ -32,13 +32,13 @@ Also a remove button to remove a movie from your favorites section if you have w
 ## Screenshot
 
 ### Homepage
-![screenshot of Homepage](assets/images/Homepage.png) 
+![screenshot of Homepage](assets/images/home-page.png) 
 
 ### Search Results page
 ![screenshot of search results](assets/images/search-results.png) 
 
 ### Favorites page
-![screenshot of favorites](assets/images/favorites.png) 
+![screenshot of favorites](assets/images/favorites-page.png) 
 
 ## Deployment
 https://fzhao888.github.io/ReelDeal/
