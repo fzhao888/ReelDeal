@@ -13,14 +13,17 @@ h1 {
     font-weight: bold;
     background-color: chocolate;
     color: white;
-    font-size: 24px; 
+    font-size: 24px;
     padding: 10px;
     border-radius: 0px;
 }
 
-.navbar a.navbar-item {
-    color: white; 
+.navbar-brand {
     padding: 20px;
+}
+
+.navbar a.navbar-item {
+    color: white;
 }
 
 .navbar a.navbar-item.active:hover {
@@ -29,7 +32,7 @@ h1 {
     font-weight: bold;
     border-radius: 100px;
 }
- 
+
 
 .submit {
     background-color: chocolate;
@@ -49,18 +52,18 @@ h1 {
     font-weight: bold;
 }
 
-#search-form .button{ 
+#search-form .button {
     background-color: brown;
     color: white;
-} 
+}
 
-#search-form .button:hover{ 
+#search-form .button:hover {
     background-color: white;
     color: black;
-} 
+}
 
 #results-page {
-    text-align: center; 
+    text-align: center;
     background-color: chocolate;
     color: white;
     font-size: 24px;
@@ -74,12 +77,12 @@ h1 {
     font-weight: bold;
 }
 
-#search-form .input{
+#search-form .input {
     width: 100%;
 }
 
 body {
-    min-height: 100vh ;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -88,63 +91,62 @@ footer {
     margin-top: auto;
 }
 
-.place-holder{
-    font-size:16px;
+.place-holder {
+    font-size: 16px;
     font-weight: bold;
 }
 
-#error-message{
+#error-message {
     font-size: 20px;
-} 
- 
-.backBtnDiv{
-    text-align: center;
-    background-color: chocolate; 
-    padding-bottom: 20px; 
 }
 
-#back{
+.backBtnDiv {
+    text-align: center;
+    background-color: chocolate;
+    padding-bottom: 20px;
+}
+
+#back {
     background-color: brown;
     color: white;
     border: none;
 }
 
-.footer{
+.footer {
     background-color: chocolate;
     color: white;
 }
 
-#delete{
+#delete {
     background-color: red;
     color: black;
 }
 
-#error-message{
+#error-message {
     text-align: center;
 }
 
-#e-head{
+#e-head {
     background-color: blue;
-   
+
 }
 
-#e-head p{
+#e-head p {
     color: white;
 }
 
-#e-message{
+#e-message {
     background-color: gray;
     color: white;
 }
 
-#e-footer{
+#e-footer {
     background-color: gray;
     justify-content: center;
 }
 
-@media(min-width: 720px){
-    #search-form .input{
+@media(min-width: 720px) {
+    #search-form .input {
         width: 50%;
     }
 }
-

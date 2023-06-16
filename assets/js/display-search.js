@@ -236,7 +236,7 @@ function printResult(movie) {
     mediaContent.append(ratingsEl, releaseYearEl, ratedEl, runtimeEl, genreEl, plotEl);  
    
     var saveBtn = document.createElement('button');
-    saveBtn.classList.add("button","is-medium", "is-dark","is-responsive"); //style with bulma
+    saveBtn.classList.add("button","is-medium", "is-dark","is-responsive","is-rounded"); //style with bulma
     saveBtn.textContent = "Save";
     
     saveBtn.addEventListener('click', function () {

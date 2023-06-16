@@ -89,7 +89,7 @@ if (!storedMovies || storedMovies.length === 0) {
         var removeBtn = document.createElement('button');
         var buttonID = removeBtn.setAttribute('id', i);
 
-        removeBtn.classList.add("button", "is-medium", "is-dark", "is-responsive"); //style with bulma
+        removeBtn.classList.add("button", "is-medium", "is-dark", "is-responsive","is-rounded"); //style with bulma
         removeBtn.textContent = "Remove";
 
 
