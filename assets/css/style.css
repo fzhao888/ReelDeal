@@ -19,8 +19,8 @@ h1 {
 }
 
 .navbar a.navbar-item {
-    color: white;
-    padding: 0px 75px;
+    color: white; 
+    padding: 20px;
 }
 
 .navbar a.navbar-item.active:hover {
@@ -29,6 +29,7 @@ h1 {
     font-weight: bold;
     border-radius: 100px;
 }
+ 
 
 .submit {
     background-color: chocolate;

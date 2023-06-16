@@ -72,6 +72,7 @@ function findActorID(actorName) {
                 }
                 eMessage.textContent = 'No results found, search again!';
                 errorEl.classList.add("is-active");
+                return;
             }
 
             //console.log(result.results);
