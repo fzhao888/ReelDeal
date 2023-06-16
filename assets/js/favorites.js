@@ -39,10 +39,8 @@ if (!storedMovies || storedMovies.length === 0) {
         resultHeader.append(movieNameEl);
 
         var resultBody = document.createElement("div");
-        resultBody.classList.add("card-content");
-        resultBody.style.fontSize = "large";
+        resultBody.classList.add("card-content", "is-size-5-mobile", "is-size-5-touch", "is-size-5-tablet", "is-size-5-desktop", "is-size-5-widescreen", "is-size-5-fullhd");
         resultCard.append(resultBody);
-
 
         var mediaDiv = document.createElement("div");
         mediaDiv.classList.add("media");

@@ -72,14 +72,6 @@ h1 {
     width: 100%;
 }
 
-#last-viewed {
-    text-align: center;
-    font-size: 24px;
-    background-color: chocolate;
-    color: white;
-    font-weight: bold;   
-}  
-
 body {
     min-height: 100vh ;
     display: flex;
