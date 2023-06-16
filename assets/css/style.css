@@ -74,3 +74,23 @@ body {
 footer {
     margin-top: auto;
 }
+
+@media (max-width: 450px) {
+    h1 {
+      background-image: none;
+      background-color: red;
+    }
+  
+    .navbar {
+      background-image: none;
+      background-color: red;
+    }
+  
+    #landing-page,
+    #results-page,
+    #search-form,
+    #last-viewed {
+      background-image: none;
+      background-color: red;
+    }
+  }
