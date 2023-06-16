@@ -104,8 +104,41 @@ footer {
 }
 
 #back{
-    background-color: yellow;
+    background-color: peachpuff;
     color: black;
+}
+
+.footer{
+    background-color: chocolate;
+    color: white;
+}
+
+#delete{
+    background-color: red;
+    color: black;
+}
+
+#error-message{
+    text-align: center;
+}
+
+#e-head{
+    background-color: blue;
+   
+}
+
+#e-head p{
+    color: white;
+}
+
+#e-message{
+    background-color: gray;
+    color: white;
+}
+
+#e-footer{
+    background-color: gray;
+    justify-content: center;
 }
 
 @media(min-width: 720px){
