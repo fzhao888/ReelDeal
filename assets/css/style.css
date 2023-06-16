@@ -48,10 +48,6 @@ h1 {
     font-weight: bold;
 }
 
-.backBtnDiv {
-    text-align: center;
-}
-
 #search-form .button{ 
     background-color: brown;
     color: white;
@@ -101,12 +97,15 @@ footer {
 } 
  
 .backBtnDiv{
+    text-align: center;
     background-color: chocolate; 
+    padding-bottom: 20px; 
 }
 
 #back{
-    background-color: peachpuff;
-    color: black;
+    background-color: brown;
+    color: white;
+    border: none;
 }
 
 .footer{
