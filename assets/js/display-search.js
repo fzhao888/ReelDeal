@@ -3,6 +3,11 @@ var searchTextEl = document.getElementById("search-text");
 var resultContentEl = document.getElementById("result-content");
 var resultPageEl = document.getElementById("results-page");
 var searchFormEl = document.getElementById('search-form');
+var errorEl = document.getElementById("error-message");
+var closeBtn = document.getElementById("delete");
+var okBtn = document.getElementById("ok");
+var eMessage = document.getElementById("e-message");
+
 
 
 function getParams() {
@@ -15,8 +20,8 @@ function displayActorName(actorName) {
     //checks for empty actor name
     if (!actorName) {
         searchTextEl.textContent = "";
-        console.error("Please input an actor name.");
-        resultPageEl.innerHTML = '<h3>Please input an actor name.</h3>';
+        eMessage.textContent = "Empty Actor Name";
+        errorEl.classList.add('is-active');     
         return;
     }//end of checking for empty actor name
 
@@ -60,7 +65,8 @@ function findActorID(actorName) {
                 for (var i = 0; i < fullName.length; i++) {
                     resultTextEl.textContent += fullName[i] + " ";
                 }
-                resultContentEl.innerHTML = '<h3>No results found, search again!</h3>';
+                eMessage.textContent = 'No results found, search again!';
+                errorEl.classList.add("is-active");
             }
 
             //console.log(result.results);
@@ -115,7 +121,7 @@ function findMovies(movies) {
     var apiKey = "d63d2ead&s";
     var moviesList = [];
      
-    for (var i = 0; i < movies.length; i++) {
+    for (var i = 0; i < movies.length && i<10; i++) {
         var queryURL = "https://omdbapi.com/?apikey=" + apiKey + "&i=" + movies[i] + "&plot=full";
 
         //fetches movies object data 
@@ -256,5 +262,13 @@ function handleSearchFormSubmit(event) {
 }
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
+
+closeBtn.addEventListener("click", function(){
+    errorEl.classList.remove('is-active');
+});
+
+okBtn.addEventListener("click", function(){
+    errorEl.classList.remove('is-active');
+});
 
 getParams();

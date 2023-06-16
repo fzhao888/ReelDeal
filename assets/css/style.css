@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    background-image: linear-gradient(to left, white, brown);
+    background-color: chocolate;
     color: white;
     font-size: 24px;
     font-weight: bold;
@@ -11,7 +11,7 @@ h1 {
     display: flex;
     justify-content: center;
     font-weight: bold;
-    background-image: linear-gradient(to left, white, brown);
+    background-color: chocolate;
     color: white;
     font-size: 24px; 
 }
@@ -26,7 +26,7 @@ h1 {
 }
 
 .submit {
-    background-color: red;
+    background-color: chocolate;
     color: white;
 
 }
@@ -38,14 +38,24 @@ h1 {
 #landing-page {
     text-align: center;
     font-size: 24px;
-    background-image: linear-gradient(to left, white, brown);
+    background-color: chocolate;
     color: white;
     font-weight: bold;
 }
 
+#search-form .button{ 
+    background-color: brown;
+    color: white;
+} 
+
+#search-form .button:hover{ 
+    background-color: white;
+    color: black;
+} 
+
 #results-page {
     text-align: center; 
-    background-image: linear-gradient(to left, white, brown);
+    background-color: chocolate;
     color: white;
     font-size: 24px;
 }
@@ -53,7 +63,7 @@ h1 {
 #search-form {
     text-align: center;
     font-size: 24px;
-    background-image: linear-gradient(to left, white, brown);
+    background-color: chocolate;
     color: white;
     font-weight: bold;
 }
@@ -61,10 +71,11 @@ h1 {
 #last-viewed {
     text-align: center;
     font-size: 24px;
-    background-image: linear-gradient(to left, white, brown);
+    background-color: chocolate;
     color: white;
     font-weight: bold;   
 }  
+
 body {
     min-height: 100vh ;
     display: flex;
@@ -75,24 +86,35 @@ footer {
     margin-top: auto;
 }
 
-@media (max-width: 450px) {
-    h1 {
-      background-image: none;
-      background-color: brown;
+.place-holder{
+    font-size:16px;
+    font-weight: bold;
+}
+
+#error-message{
+    font-size: 20px;
+}
+
+/*
+@media(max-width: 1024px){
+    #actor-name{
+        width: 50%;
     }
-  
-    .navbar {
-      background-image: none;
-      background-color: brown;
+}
+
+@media(max-width: 769px){
+    #actor-name{
+        width: 50%;
     }
-  
-    #landing-page,
-    #results-page,
-    #search-form,
-    #last-viewed {
-      background-image: none;
-      background-color: brown;
+}
+
+@media(max-width:768px){
+    #actor-name{
+        width: 70%;
     }
+}
+
+@media (max-width: 450px) { 
     #actor-name {
         width: 100%;
     }
@@ -100,3 +122,4 @@ footer {
         width: 100%;
     }
   }
+  */
