@@ -1,6 +1,6 @@
 h1 {
     text-align: center;
-    background-image: linear-gradient(to right, white, red);
+    background-image: linear-gradient(to left, white, brown);
     color: white;
     font-size: 24px;
     font-weight: bold;
@@ -11,7 +11,7 @@ h1 {
     display: flex;
     justify-content: center;
     font-weight: bold;
-    background-image: linear-gradient(to right, white, red);
+    background-image: linear-gradient(to left, white, brown);
     color: white;
     font-size: 24px; 
 }
@@ -38,14 +38,14 @@ h1 {
 #landing-page {
     text-align: center;
     font-size: 24px;
-    background-image: linear-gradient(to right, white, red);
+    background-image: linear-gradient(to left, white, brown);
     color: white;
     font-weight: bold;
 }
 
 #results-page {
     text-align: center; 
-    background-image: linear-gradient(to right, white, red);
+    background-image: linear-gradient(to left, white, brown);
     color: white;
     font-size: 24px;
 }
@@ -53,7 +53,7 @@ h1 {
 #search-form {
     text-align: center;
     font-size: 24px;
-    background-image: linear-gradient(to right, white, red);
+    background-image: linear-gradient(to left, white, brown);
     color: white;
     font-weight: bold;
 }
@@ -61,7 +61,7 @@ h1 {
 #last-viewed {
     text-align: center;
     font-size: 24px;
-    background-image: linear-gradient(to right, white, red);
+    background-image: linear-gradient(to left, white, brown);
     color: white;
     font-weight: bold;   
 }  
@@ -78,12 +78,12 @@ footer {
 @media (max-width: 450px) {
     h1 {
       background-image: none;
-      background-color: red;
+      background-color: brown;
     }
   
     .navbar {
       background-image: none;
-      background-color: red;
+      background-color: brown;
     }
   
     #landing-page,
@@ -91,6 +91,6 @@ footer {
     #search-form,
     #last-viewed {
       background-image: none;
-      background-color: red;
+      background-color: brown;
     }
   }
