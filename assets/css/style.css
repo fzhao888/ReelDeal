@@ -1,3 +1,10 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
 h1 {
     text-align: center;
     background-color: chocolate;
@@ -18,15 +25,28 @@ h1 {
     border-radius: 0px;
 }
 
-.navbar-brand {
-    padding: 15px;
+.navbar .button{
+    border-color: brown;
+    display: flex;
+    align-items: center;
+}
+ 
+ 
+.menu {
+    display: flex;
+    flex-direction: row; 
+    margin: 20px;
+
+}
+
+.menu li{
+    padding: 20px;
 }
 
 .navbar a.navbar-item {
     color: white;
     background-color: brown;
-    border-radius: 100px;
-    margin: 0 20px;
+    border-radius: 100px; 
 }
 
 .navbar a.navbar-item.active:hover {
@@ -83,17 +103,6 @@ h1 {
     width: 100%;
 }
 
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-footer {
-    margin-top: auto;
-    font-weight: bold;
-}
-
 .place-holder {
     font-size: 16px;
     font-weight: bold;
@@ -120,10 +129,14 @@ footer {
     color: black;
 }
 
-.footer {
+.footer { 
     background-color: chocolate;
-    color: white;
+    color: white; 
+    margin-top: auto;
+    font-weight: bold;
+    height: 20px;
 }
+ 
 
 #delete {
     background-color: red;

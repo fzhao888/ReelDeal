@@ -15,56 +15,58 @@
     <h1>Reel Deal</h1>
 
     <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item active"  href="./index.html">
-          Home
-        </a>
-        <a class="navbar-item active" href="./favorites.html">
-          Favorites
-        </a>
-      </div>
+      <a class="button navbar-item active is-responsive" id="#home" href="./index.html">
+        Home
+      </a>
+      <div class="navbar-item active"></div>
+      <a class="button navbar-item active is-responsive" id="#favorites" href="./favorites.html">
+        Favorites
+      </a>
     </nav>
+
+
   </header>
 
   <main>
     <form class="search-form" id="search-form">
       <p class="place-holder">Please Enter An Actor's Name:</p>
-      <input class="input is-normal is-rounded" id="actor-name" placeholder=""/>
-      <button class="button is-rounded is-dark">Search</button>
-        
-      </form> 
+      <input class="input is-normal is-rounded" id="actor-name" placeholder="" />
+      <button class="button is-rounded is-dark is-responsive">Search</button>
 
-     
+    </form>
+
+
     <section class="results-page" id="results-page">
       <h2>You searched for <span id="search-text"></span></h2>
       <h2>Showing results for <span id="result-text"></span></h2>
       <div id="result-content"></div>
     </section>
-  </main>  
+  </main>
 
   <div class="modal" id="error-message">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head" id="e-head">
-        <p class="modal-card-title" >No Results Found</p>
+        <p class="modal-card-title">No Results Found</p>
         <button class="delete" id="delete" aria-label="close"></button>
       </header>
-      <section class="modal-card-body" id="e-message" >
-          <p> </p>
+      <section class="modal-card-body" id="e-message">
+        <p> </p>
       </section>
       <footer class="modal-card-foot" id="e-footer">
         <button class="button" id="ok">OK</button>
       </footer>
     </div>
   </div>
-
-  <script src="./assets/js/display-search.js"></script>
-</body>
-
+  
 <footer class="footer">
   <div class="content has-text-centered">
     <p>&copy; 2023 Reel Deal. All rights reserved.</p>
   </div>
 </footer>
+
+  <script src="./assets/js/display-search.js"></script>
+</body>
+
 
 </html>
